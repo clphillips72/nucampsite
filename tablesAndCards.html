@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <title>Bootstrap Table Demo</title>
+</head>
+<!--    
+    ---------------------
+        table classes
+    ---------------------
+        table
+        table-striped
+        table-dark  + thead-light
+        table-light + thead-dark
+        table-bordered              (all cells have borders)
+        table-sm                    (shrinks table padding to make table smaller overall)
+        table-responsive 
+    ---------------------
+        card classes
+    ---------------------
+        card (on div)
+        card-header (on div/h1/h2)
+        card-body   (so card has some padding since card default is none)
+        give width by style=width: 20rem; or bootstrap grid.  Default is entire width of page
+        Can use bg-, text-, and border- for background/text/border styling/coloring
+
+
+            -->
+<body>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Breakpoint</th>
+                    <th>Extra Small</th>
+                    <th>Small</th>
+                    <th>Medium</th>
+                    <th>Large</th>
+                    <th>Extra Large</th>
+                </tr>            
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Viewport Width</th>
+                    <td>&lt;576px/td>
+                    <td>&ge;576px</td>
+                    <td>&ge;768px</td>
+                    <td>&ge;992px</td>
+                    <td>&ge;1200px</td> 
+                </tr>
+                <tr>
+                    <th>Column Class Prefix</th>
+                    <td>.col-</td>
+                    <td>.col-sm-</td>
+                    <td>.col-md-</td>
+                    <td>.col-lg-</td>
+                    <td>.col-xl-</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container ml-0 pl-2">       <!--left margin=0, left padding=2 -->
+        <div class="row">
+            <div class="col-6">
+                <div class="card border-info">  <!-- color the card border to the "info" color -->
+                    <h3 class="card-header bg-primary text-light">Lorem ipsum</h3>  <!-- make the card 
+                                                                                        header's background color
+                                                                                        be blue with white text
+                                                                                        while using h3-->
+                    <div class="card-body">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

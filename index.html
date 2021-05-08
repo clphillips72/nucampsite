@@ -41,6 +41,57 @@
            align-items-center
            text-sm-right on h2
            text-center
+   
+    ---------------------
+        Spacing classes
+    ---------------------
+            color
+                text-*  text-white, text-dark, text-light
+                bg-*
+            spacing
+                p{side}-{x}    pt-x (top padding is x), p-x (all padding is x) where x is 0-5 or auto
+                m{side}-{x}    ml-x (Left margin is x), m-x (all margin is x) where x is 0-5 or auto
+    ---------------------
+        breadcrumb classes
+    ---------------------
+        breadcrumb
+        breadcrumb-item
+        aria-label="breadcrumb"
+        aria-current="page"
+        class="breadcrumb"
+        class="breadcrumb-item {active}" + <a>
+
+        <div>
+            <ul class="breadcrumb" aria-label="breadcrumb">  class="breadcrumb" sets list-style=none so ul/ol ok
+                <li class="breadcrumb-item">
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="breadcrumb-item active" 
+                           aria-current="page">
+                    <a href="#"">About Us</a>
+                </li>
+            </ul>
+        </div>
+    ---------------------
+        navbar classes
+    ---------------------
+        navbar on <nav>
+        navbar-expand-{size} on <nav> - For responsive design
+        navbar-nav on <ul> - This used with navbar-expand-{size} causes the list of nav items to expand 
+                    vertically) instead of default horizontally stacked since the nav items are <li> in a <ul>
+        nav-item on <li>
+        nav-link on <a>
+        navbar-dark on <nav> - for dark color theme with light text on navbar
+        sticky-top or fixed-top or ... to keep the navbar at the top of the screen
+
+        For fully responsive navbars:
+            beneath the <nav> element, add a <button> element with:
+                1) class=navbar-toggler
+                2) a bunch of html attributes
+                    A) type="button"
+                    B) data-toggle="collapse"
+                    C) data-target="{"
+
 
     ---------------------
         table classes
@@ -60,6 +111,14 @@
         card-body   (so card has some padding since card default is none)
         give width by style=width: 20rem; or bootstrap grid
         Can use bg-, text-, and border- for background/text/border styling/coloring
+    ---------------------
+        image classes
+    ---------------------
+        img-fluid
+        d-flex (bootstrap recommended for img due to IE error)
+        img-thumbnail - for rounded border around image
+        media
+        media-body (uses CSS flex property)
 -->
 
 <head>
@@ -78,21 +137,27 @@
 </head>
 
 <body>
-
     <header class="jumbotron jumbotron-fluid">
         <div class="container">
             <div class="row">
+                <div class="col-4 col-sm-3 col-md-2 align-self-center">
+                    <a href="#"><img src="img/logo.png" class="img-fluid" /></a>
+                </div>
                 <div class="col">
                     <h1>NuCamp</h1>
                     <h2>a better way to camp</h2>
                 </div>
+                <div class="col-md-4 col-xl-2 mt-4">
+                    <a role="button" href="#reserveForm" class="btn btn-info btn-lg text-nowrap">Reserve Campsite</a>
+                </div>                                    
             </div>
         </div>
     </header>
-
+    
     <nav class="navbar navbar-expand-sm navbar-dark sticky-top">
         <div class="container">
-            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#nucampNavbar">
+            <a class="navbar-brand" href="#"><img src="img/logo.png" height=30px width=30px /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nucampNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="nucampNavbar">
@@ -133,87 +198,122 @@
                 <h2 class="text-sm-right">Discover & Review</h2>
             </div>
             <div class="col">
-                <h3>Our Campsites</h3>
-                <p class="d-none d-sm-block">Explore our growing database of curated campsites and leave your own
-                    reviews!</p>
-            </div>
-        </div>
-
-        <div>
-            <div class="row row-content align-items-center">
-                <div class="col-sm-4 col-md-3">
-                    <h2>Featured Campsites</h2>
-                </div>
-                <div class="col">
-                    <h3>React Lake Campground</h3>
-                    <p class="d-none d-sm-block">Nestled in the foothills of the Chrome Mountains, this campground on
-                        the shores of the pristine React Lake is a favorite for fly fishers.</p>
-                </div>
-            </div>
-
-            <div class="row row-content align-items-center">
-                <div class="col-sm-4 order-sm-last col-md-3">
-                    <h2 class="text-sm-right">Our Community Partners</h2>
-                </div>
-                <div class="col">
-                    <h3>Bootstrap Outfitters</h3>
-                    <p class="d-none d-sm-block">Bootstrap Outfitters supplies you with gear you need at prices you
-                        can't beat.</p>
+                <div class="media">
+                    <img class="d-flex mr-3 img-thumbnail" src="img/breadcrumb-trail-thumb.jpg"
+                        alt="Breadcrumb trail thumbnail" />
+                    <div class="media-body align-self-center">
+                        <h3>Our Campsites</h3>
+                        <p class="d-none d-sm-block">Explore our growing databnpm startiews!</p>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div class="row row-content align-items-center">
+            <div class="col-sm-4 col-md-3">
+                <h2>Featured Campsites</h2>
+            </div>
+            <div class="col">
+                <div class="media">                         
+                    <div class="media-body align-self-center">
+                        <h3>React Lake Campground</h3>
+                        <p class="d-none d-sm-block">Nestled in the foothills of the Chrome Mountains, this campground on
+                            the shores of the pristine React Lake is a favorite for fly fishers.</p>                            
+                    </div>
+                    <img class="d-flex ml-3 img-thumbnail" src="img/react-lake-thumb.jpg" alt="React Lake" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-content align-items-center">
+            <div class="col-sm-4 order-sm-last col-md-3">
+                <h2 class="text-sm-right">Our Community Partners</h2>
+            </div>
+            <div class="col">
+                <div class="media">
+                    <img class="d-flex mr-3 img-thumbnail" src="img/bootstrap-thumb.png" alt="Bootstrap Outfitters" />
+                    <div class="media-body align-self-center">
+                        <h3>Bootstrap Outfitters</h3>
+                        <p class="d-none d-sm-block">Bootstrap Outfitters supplies you with gear you need at prices you can't beat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-content">
+            <div class="col-sm-6 mx-auto">
+                <div class="card">
+                    <h3 class="card-header bg-info text-white">Reserve a Campsite</h3>
+                    <div class="card-body">
+                        <form id="reserveForm">
+                            <div class="row form-group">
+                                <label for="numCampers" class="col-sm-6 col-form-label">Number of Campers</label>
+                                <div class="col">
+                                    <select class="form-control" name="numCampers" id="numCampers">
+                                        <option selected>Select...</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="date" class="col-sm-6 col-form-label">Date</label>
+                                <div class="col-sm-6">   
+                                    <input type="date" class="form-control" id="date" name="date" placeholder="Date" />
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>      
+
+    <footer class="site-footer">
         <div class="container">
             <div class="row">
-                <div class="col">1</div>
-                <div class="col">2</div>
-                <div class="col">3</div>
-                <div class="col">4</div>
-                <div class="col">5</div>
-                <div class="col">6</div>
-                <div class="col">7</div>
-                <div class="col">8</div>
-                <div class="col">9</div>
-                <div class="col">10</div>
-                <div class="col">11</div>
-                <div class="col">12</div>
-            </div>
-        </div>
-        <footer class="site-footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-4 col-sm-2">
-                        <h5>Links</h5>
-                        <ul class="list-unstyled">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="aboutus.html">About</a></li>
-                            <li><a href="#">Sites</a></li>
-                            <li><a href="contactus.html">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-6 col-sm-5 offset-1 text-center">
-                        <h5>Social</h5>
-                        <a class="btn btn-social-icon btn-instagram" href="http://instagram.com/"><i
-                                class="fa fa-instagram"></i></a>
-                        <a class="btn btn-social-icon btn-facebook" href="http://facebook.com/"><i
-                                class="fa fa-facebook"></i></a>
-                        <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i
-                                class="fa fa-twitter"></i></a>
-                        <a class="btn btn-social-icon btn-google" href="http://youtube.com/"><i
-                                class="fa fa-youtube"></i></a>
-                    </div>
-                    <div class="col-sm-4 text-center">
-                        <a role="button" class="btn btn-link" href="tel:+12065551234"><i class="fa fa-phone"></i>
-                            1-206-555-1234</a><br />
-                        <a role="button" class="btn btn-link" href="mailto:campsites@nucamp.co"><i
-                                class="fa fa-envelope-o"></i>
-                            campsites@nucamp.co</a>
-                    </div>
+                <div class="col-4 col-sm-2">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="#">Sites</a></li>
+                        <li><a href="contactus.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-sm-5 offset-1 text-center">
+                    <h5>Social</h5>
+                    <a class="btn btn-social-icon btn-instagram" href="http://instagram.com/"><i
+                            class="fa fa-instagram"></i></a>
+                    <a class="btn btn-social-icon btn-facebook" href="http://facebook.com/"><i
+                            class="fa fa-facebook"></i></a>
+                    <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i
+                            class="fa fa-twitter"></i></a>
+                    <a class="btn btn-social-icon btn-google" href="http://youtube.com/"><i
+                            class="fa fa-youtube"></i></a>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <a role="button" class="btn btn-link" href="tel:+12065551234"><i class="fa fa-phone"></i>
+                        1-206-555-1234</a><br />
+                    <a role="button" class="btn btn-link" href="mailto:campsites@nucamp.co"><i
+                            class="fa fa-envelope-o"></i>
+                        campsites@nucamp.co</a>
                 </div>
             </div>
-        </footer>
-        <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
-        <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        </div>
+    </footer>
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -50,3 +50,12 @@ header h2{
     border-top: none;
     padding: 10px;
 }
+
+.carousel-caption{
+    background-color: rgba(0, 0, 0, .4);
+}
+
+.carousel{
+    border: solid #5637DD;
+    padding: 10px;
+}
